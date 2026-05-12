@@ -1,0 +1,31 @@
+{
+  "name": "mini-apty",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Chrome MV3 extension for authoring and replaying in-app walkthroughs",
+  "scripts": {
+    "dev": "vite build --watch --mode development",
+    "build": "tsc --noEmit && vite build && vite build -c vite.content.config.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "chrome-extension",
+    "manifest-v3",
+    "walkthrough"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "zod": "^4.4.3",
+    "zustand": "^5.0.13"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.1.42",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.12"
+  }
+}

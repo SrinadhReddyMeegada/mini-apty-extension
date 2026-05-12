@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    // === Strictness ===
+    // These catch real bugs. Every one of these has saved me from a production issue.
+    "strict": true,                    // Enables ALL strict checks below
+    "types": ["chrome"],               // Include chrome.* API types globally
+    "noUncheckedIndexedAccess": true,  // array[i] returns T | undefined, not T
+    "noUnusedLocals": true,            // Dead code = confusion
+    "noUnusedParameters": true,        // Unused params = API misunderstanding
+    "noFallthroughCasesInSwitch": true,// Forgotten break in switch = bug
+
+    // === Module System ===
+    "target": "ES2022",          // Chrome 120+ supports everything in ES2022
+    "module": "ESNext",          // Vite handles module bundling
+    "moduleResolution": "bundler", // Tells TS to let the bundler resolve imports
+    "esModuleInterop": true,     // Allows `import React from 'react'` syntax
+    "allowImportingTsExtensions": true, // Can import './foo.ts' directly
+    "isolatedModules": true,     // Required by Vite — each file must be independently transformable
+
+    // === Output ===
+    "noEmit": true,              // Vite does the emitting, not tsc
+    "declaration": false,        // We're not publishing a library
+
+    // === JSX ===
+    "jsx": "react-jsx",          // Uses the modern JSX transform (no need to import React)
+
+    // === Type Checking ===
+    "skipLibCheck": true,        // Don't typecheck node_modules .d.ts files (speed)
+    "forceConsistentCasingInFileNames": true  // Windows/Mac filename casing bugs
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,25 @@
+node_modules/
+dist/
+dist-tsc/
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.class
+*.exe
+*.log
+
+# Misc
+coverage/
+*.tgz
