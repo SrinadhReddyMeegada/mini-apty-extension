@@ -3,16 +3,8 @@ import { z } from 'zod';
 /**
  * Zod Schemas for Runtime Validation
  * 
- * WHY THIS IS CRITICAL FOR SENIOR ENGINEERING:
- * TypeScript types (`interface`) disappear at compile time. When we read data
- * from `chrome.storage.local`, it has an `any` type at runtime.
- * 
- * If a previous version of our extension wrote a walkthrough missing a field,
- * or if storage got corrupted, casting it as `Step[]` in TS won't stop the 
- * runtime crash when we try to render it.
- * 
- * Zod parses and validates the actual JSON object at runtime. If it fails,
- * we catch it gracefully instead of exploding the React tree.
+ * Enforces strict runtime type-checking when reading/writing to chrome.storage.local
+ * to prevent application crashes from corrupt or legacy payload schemas.
  */
 
 export const SelectorMetadataSchema = z.object({

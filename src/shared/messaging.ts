@@ -1,12 +1,8 @@
 import { ExtensionMessage, MessageResponse } from './messages';
 
 /**
- * A strongly-typed wrapper around chrome.runtime.sendMessage.
- * 
- * WHY THIS IS BETTER THAN NATIVE API:
- * 1. Promisifies the callback, allowing `async/await`.
- * 2. Properly handles `chrome.runtime.lastError` (rejects the promise instead of silently failing).
- * 3. Enforces that the Response matches the Request type.
+ * A strongly-typed, promise-based wrapper around chrome.runtime.sendMessage.
+ * Handles chrome.runtime.lastError rejection automatically.
  */
 export function sendExtensionMessage<M extends ExtensionMessage>(
   message: M

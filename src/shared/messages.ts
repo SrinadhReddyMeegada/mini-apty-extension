@@ -1,17 +1,8 @@
 /**
- * Mini Apty — Message Contracts
- *
- * WHY WE DO THIS:
- * In a Chrome extension, the Service Worker, Content Script, and Popup run in
- * completely isolated JavaScript environments. They communicate via serialized JSON.
- *
- * If we use ad-hoc strings like `chrome.runtime.sendMessage({ action: "start" })`,
- * we will inevitably face typos, missing payloads, or unhandled messages.
- *
- * By defining a Discriminated Union of message types, TypeScript will:
- * 1. Force us to include required payload fields when sending.
- * 2. Give us auto-complete in our switch statements in the message listener.
- * 3. Ensure we return the correct Response type for each Request type.
+ * Extension Message Contracts
+ * 
+ * Defines the Discriminated Union of all valid cross-environment messages
+ * to ensure type-safe JSON serialization between Popup, Service Worker, and Content Script.
  */
 
 export interface PingMessage {

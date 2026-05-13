@@ -43,13 +43,8 @@ function handleClick(e: MouseEvent) {
 }
 
 /**
- * Initializes the recorder by subscribing to the Zustand store.
- * 
- * WHY THIS ARCHITECTURE:
- * Instead of passing callbacks deep into React components, we keep the DOM
- * event listeners strictly decoupled. They just subscribe to Zustand.
- * When a user clicks "Start Recording" in the React UI, the store updates,
- * and this subscription attaches the global window listeners.
+ * Initializes the recorder by subscribing to the global Zustand store.
+ * Decouples DOM event listeners from the React component tree.
  */
 export function initRecorder() {
   useAuthorStore.subscribe((state) => {

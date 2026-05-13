@@ -1,12 +1,8 @@
 let highlightBox: HTMLDivElement | null = null;
 
 /**
- * Creates a floating overlay div that tracks the target element.
- * 
- * WHY NOT JUST ADD A CSS CLASS TO THE TARGET ELEMENT?
- * If we add `border: 2px solid green` to the host page's elements, we risk breaking
- * their layout. If they have `overflow: hidden`, our border might get clipped.
- * Instead, we use an absolutely positioned invisible div on top of the viewport.
+ * Renders an absolutely positioned bounding box over a target element.
+ * Uses a detached floating div to prevent mutating host page CSS/layout.
  */
 export function highlightElement(el: HTMLElement) {
   if (!highlightBox) {
@@ -15,8 +11,8 @@ export function highlightElement(el: HTMLElement) {
     
     // Position fixed to the viewport
     highlightBox.style.position = 'fixed';
-    // Pointer-events: none is CRITICAL. It ensures that when the user clicks,
-    // the click passes THROUGH the highlight box and hits the actual element below it.
+    // Pass-through clicks to underlying host elements
+
     highlightBox.style.pointerEvents = 'none'; 
     highlightBox.style.zIndex = '2147483646'; // Just under the drawer's shadow root
     highlightBox.style.border = '2px solid #4CAF50';
